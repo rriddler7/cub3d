@@ -1,0 +1,6 @@
+*.o
+idea
+.DS_Store
+*.out
+*.d
+cmake-build-debug
