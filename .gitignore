@@ -1,5 +1,5 @@
 *.o
-idea
+.idea
 .DS_Store
 *.out
 *.d
