@@ -64,7 +64,7 @@ $(MLX):
 
 #Project file rule
 $(NAME): $(BUILDOBJS)
-	$(CC) $(BUILDOBJS) $(MLX) $(MLXFLAGS) $(DEBUG) $(CFLAGS) -o $(NAME)
+	$(CC) $(BUILDOBJS) $(LIBFT) $(MLX) $(MLXFLAGS) $(DEBUG) $(CFLAGS) -o $(NAME)
 
 # Cleaning up the build files
 clean:
