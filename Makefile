@@ -9,9 +9,12 @@ SRCDIR		= ./src/
 SRCNAMES	= $(shell ls $(SRCDIR) | grep -E ".+\.c")
 SRC		= $(addprefix $(SRCDIR), $(SRCNAMES))
 OBJ		= $(SRC:.c=.o)
+DEP		= $(OBJS:.o=.d)
 INC		= ./inc/
 BUILDDIR	= ./build/
+DEPENDSDIR	= ./dep/
 BUILDOBJS	= $(addprefix $(BUILDDIR), $(SRCNAMES:.c=.o))
+BUILDDEPS	= $(BUILDOBJS:.o=.d)
 
 # Libft builds and dirs
 LIBDIR		= ./libft/
@@ -20,7 +23,7 @@ LIBINC		= ./libft/
 
 # Optimization and compiler flags
 CC		= gcc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -MMD
 
 # Debug flag
 DEBUG		= -g
@@ -39,7 +42,7 @@ else
 endif
 
 # Main rule
-all:		mlxinit $(BUILDDIR) $(LIBFT) $(MLX) $(NAME)
+all:	 $(BUILDDIR) $(LIBFT) $(MLX) $(NAME)
 
 # Object dir rule
 $(BUILDDIR):
@@ -54,6 +57,8 @@ $(LIBFT):
 
 # MLX make
 $(MLX):
+	git submodule init
+	git submodule update
 	@make -C $(MLXDIR) 2>/dev/null
 	@echo "\t\t MLX is builtin'"
 
@@ -63,7 +68,9 @@ $(NAME): $(BUILDOBJS)
 
 # Cleaning up the build files
 clean:
-	$(RM) $(SRCDIR)$(OBJ)
+	@$(RM) $(BUILDOBJS)
+	$(RM) $(BUILDDEPS)
+
 	@make -C $(LIBDIR) clean
 	@make -C $(MLXDIR) clean
 
@@ -71,16 +78,14 @@ clean:
 # Getting rid of the project file
 fclean: clean
 	@$(RM) $(NAME)
-	@$(RM) -rf $(BUILDDIR)
+	$(RM) -rf $(BUILDDIR)
 	@make -C $(LIBDIR) fclean
 
 
 # Do both of the above
 re: fclean all
 
-mlxinit: $(MLX)
-	git submodule init
-	git submodule update
+include $(wildcard $(DEP))
 
 # Just in case those files exist in the root dir
-.PHONY: all fclean clean re mlxinit
+.PHONY: all fclean clean re
