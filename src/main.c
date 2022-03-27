@@ -1,11 +1,17 @@
-#include "../inc/Cube3d.h"
+#include "cub3d.h"
 
-int main()
+int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_data	data;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+	if (argc != 2)
+	{
+		write(2, "Error: too many/few arguments\n", 30);
+		return (1);
+	}
+	ft_memset(&data, 0, sizeof(t_data));
+	map_parser(argv[1], &data);
+//	printf("%s", data.repfile);
+	cleaning(&data);
+	return (0);
 }

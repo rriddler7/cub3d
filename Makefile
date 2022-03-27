@@ -23,7 +23,7 @@ LIBINC		= ./libft/
 
 # Optimization and compiler flags
 CC		= gcc
-CFLAGS		= -Wall -Werror -Wextra -MMD
+CFLAGS		= -MMD
 
 # Debug flag
 DEBUG		= -g
@@ -33,7 +33,7 @@ ifeq ($(OS), Linux)
 	MLXDIR		= ./minilibx-linux/
 	MLX		= ./minilibx-linux/libmlx.a
 	MLXINC		= ./minilibx-linux/
-	MLXFLAGS	= -lmlx -lm -lX11 -lXext
+	MLXFLAGS	= -lmlx -lm -lbsd -lX11 -lXext
 else
 	MLXDIR		= ./mlx-mac/
 	MLX		= ./mlx-mac/libmlx.a
@@ -64,7 +64,7 @@ $(MLX):
 
 #Project file rule
 $(NAME): $(BUILDOBJS)
-	$(CC) $(BUILDOBJS) $(MLX) $(MLXFLAGS) $(DEBUG) $(CFLAGS) -o $(NAME)
+	$(CC) $(BUILDOBJS) $(LIBFT) $(MLX) $(MLXFLAGS) $(DEBUG) $(CFLAGS) -o $(NAME)
 
 # Cleaning up the build files
 clean:

@@ -1,43 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:16:47 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by Mickey Rudge on 4/30/21.
-//
-// Функция конвертирует чар в инт, и возвращает полученное число.
-
-#include "libft.h"
-
-long int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	char			*p;
-	long int		x;
-	long int		minus;
+	int			i;
+	long long	sign;
+	long long	res;
 
-	x = 0;
-	minus = 1;
-	p = (char *)str;
-	while (*p == '\t' || *p == '\n' || *p == '\v' || *p == '\f' || *p == '\r'
-		|| *p == ' ')
-		p++;
-	if (*p == 45 || *p == 43)
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
+		|| str[i] == '\r' || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str [i] == '+')
 	{
-		if (*p == 45)
-			minus *= -1;
-		p++;
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
 	}
-	while (*p >= '0' && *p <= '9')
-	{
-		x = x * 10 + (*p - '0');
-		p++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{	
+		res = (res * 10) + str[i] - '0';
+		i++;
 	}
-	return (x * minus);
+	return (res * sign);
 }

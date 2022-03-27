@@ -1,37 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:18:05 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by vitya on 02.05.2021.
-//
-// Функция сравнивает н байт строки s1 со строкой s2. Предполагается что обе
-// строки имеют одинаковое количество байтов.
-//
-// return: 0 - если 2 строки идентичны, другой результат в случае, если
-// строки не равны.
-#include "libft.h"
-
-int	ft_memcmp(const void *arr1, const void *arr2, size_t n)
+int	ft_memcmp(const void *a, const void *b, size_t lenght)
 {
-	unsigned char	*p1;
-	unsigned char	*p2;
+	size_t	i;
 
-	p1 = (unsigned char *)arr1;
-	p2 = (unsigned char *)arr2;
-	while (n--)
+	i = 0;
+	while (i < lenght)
 	{
-		if (*p1 != *p2)
-			return (*p1 - *p2);
-		p1++;
-		p2++;
+		if (((unsigned char *)a)[i] != ((unsigned char *)b)[i])
+		{
+			return (((unsigned char *)a)[i] - ((unsigned char *)b)[i]);
+		}
+		i++;
 	}
 	return (0);
 }

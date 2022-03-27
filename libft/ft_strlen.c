@@ -1,26 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:19:04 by mrudge            #+#    #+#             */
-/*   Updated: 2021/12/18 19:29:25 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by vitya on 23.04.2021.
-//
-
-#include "libft.h"
-
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (*str++)
-		i++;
+	if (str)
+	{
+		while (str[i])
+			i++;
+	}
 	return (i);
 }

@@ -1,41 +1,23 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:19:07 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by vitya on 04.05.2021.
-//
-
-//Функция итерируется по строке с, производя операции с каждым элементом
-// функцией ф, после, выделяя память под новый масиив арр и записывая
-// результаты в него
-#include "libft.h"
-
-char	*ft_strmapi(char const *c, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
-	char			*arr;
-	size_t			len_c;
+	int		i;
+	char	*str;
+	int		len_s;
 
 	i = 0;
-	if (!c || !f)
+	if (s == NULL || f == NULL)
 		return (NULL);
-	len_c = ft_strlen(c);
-	arr = (char *)malloc(sizeof(char) * (len_c + 1));
-	if (!arr)
-		return (NULL);
-	while (c[i])
+	len_s = ft_strlen(s);
+	str = (char *)malloc(len_s + 1);
+	if (str == NULL)
+		exit(1);
+	while (s[i])
 	{
-		arr[i] = (*f)(i, c[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	arr[i] = '\0';
-	return (arr);
+	str[i] = '\0';
+	return (str);
 }
