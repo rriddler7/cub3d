@@ -191,4 +191,11 @@ void	put_vertical_line(t_data *data, int i);
 void	cast_floor(t_data *data);
 //--------------------
 
+
+
+//----my functions
+void	init_pl_data(t_data *data);
+void	init_cs(t_data *data);
+void	texture(t_data *data);
+void	image(t_data *data, t_img *img);
 #endif
