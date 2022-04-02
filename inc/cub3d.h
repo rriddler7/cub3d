@@ -23,7 +23,7 @@
 # define DOWN 125
 # define RIGHT 124
 
-# define SPEED 0.06
+# define SPEED 0.1
 # define ROT_SPEED 0.03
 
 typedef struct s_img
@@ -79,10 +79,7 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	int		prev_x_mouse;
-	int		prev_y_mouse;
 	int		view_height;
-	int		is_mouse_active;
 }					t_mlx;
 
 typedef struct s_keys
@@ -116,7 +113,6 @@ typedef struct s_data
 int		main(int argc, char **argv);
 void	init_data(t_data *data);
 void	reaplace_file(t_data *data, int fd_file);
-// void	map_parser(char *file, t_data *data);
 void	parse_map(char *file, t_data *data);
 void	make_hex(t_data *data);
 void	handling_data(t_data *data);
@@ -138,7 +134,6 @@ bool	check_s_t(char a, int check);
 // bool	check_extension(char *str, int check);
 bool	check_extension(char *fileext, char *extens);
 
-//error
 void	ft_error(t_data *data, char *error);
 //cleaning
 void	cleaning(t_data *data);
@@ -163,11 +158,6 @@ void	turn_right(t_data *data);
 void	rotate(t_data *data, int cos_val, int sin_val);
 //--------------------
 
-//----mouse.c----
-int		mousehook(int x, int y, t_data *data);
-int		small_mousehook(int button, int x, int y, t_data *data);
-//---------------
-
 //----main.c----
 int		ft_exit(t_data *data);
 //--------------
@@ -176,7 +166,7 @@ int		ft_exit(t_data *data);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		get_pixel_color(t_img *img, int x, int y);
 void	make_image(t_data *data, t_img *img);
-void	get_textures(t_data *data);
+void	make_textures(t_data *data);
 //------------------
 
 //----cast_walls.c----
@@ -184,7 +174,7 @@ int		cast_walls(t_data *data);
 //--------------------
 
 //----cast_walls2.c----
-void	find_wall_height(t_data *data);
+void	find_wall(t_data *data);
 void	find_where_was_the_hit(t_data *data);
 void	put_vertical_line(t_data *data, int i);
 //--------------------

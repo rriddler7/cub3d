@@ -25,7 +25,7 @@ void	make_image(t_data *data, t_img *img)
 		&img->line_length, &img->endian);
 }
 
-void	get_textures(t_data *data)
+void	make_textures(t_data *data)
 {
 	data->tex.no.img = mlx_xpm_file_to_image(data->mlx.mlx, data->no, \
 		&data->tex.no.width, &data->tex.no.height);
