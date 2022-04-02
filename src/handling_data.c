@@ -28,13 +28,23 @@ int	data_clipping(int i, t_data *data, char **str)
 	return (i);
 }
 
-void	data_validation(t_data *data)
+// void	data_validation(t_data *data)
+// {
+// 	if (access(data->no, R_OK) || access(data->so, R_OK)
+// 		|| access(data->we, R_OK) || access(data->ea, R_OK))
+// 		ft_error(data, "text_error");
+// 	if (!check_extension(data->no, 1) || !check_extension(data->no, 1)
+// 		|| !check_extension(data->we, 1) || !check_extension(data->ea, 1))
+// 		ft_error(data, "ext");
+// }
+
+void	data_validation(t_data *data) //
 {
 	if (access(data->no, R_OK) || access(data->so, R_OK)
 		|| access(data->we, R_OK) || access(data->ea, R_OK))
 		ft_error(data, "text_error");
-	if (!check_extension(data->no, 1) || !check_extension(data->no, 1)
-		|| !check_extension(data->we, 1) || !check_extension(data->ea, 1))
+	if (!check_extension(data->no, ".xpm") || !check_extension(data->no, ".xpm")
+		|| !check_extension(data->we, ".xpm") || !check_extension(data->ea, ".xpm"))
 		ft_error(data, "ext");
 }
 
@@ -67,7 +77,7 @@ int	param_selection(int i, t_data *data)
 	return (i);
 }
 
-void	handling_data(t_data *data)
+void	handling_data(t_data *data) //обработка данных
 {
 	int	i;
 

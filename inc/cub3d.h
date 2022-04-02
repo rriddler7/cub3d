@@ -116,7 +116,8 @@ typedef struct s_data
 int		main(int argc, char **argv);
 void	init_data(t_data *data);
 void	reaplace_file(t_data *data, int fd_file);
-void	map_parser(char *file, t_data *data);
+// void	map_parser(char *file, t_data *data);
+void	parse_map(char *file, t_data *data);
 void	make_hex(t_data *data);
 void	handling_data(t_data *data);
 int		color_handling(int i, t_data *data, char color);
@@ -134,7 +135,8 @@ bool	check_plr(char a);
 //checking spaces and tabs
 bool	check_s_t(char a, int check);
 //checking .cub and .xpm
-bool	check_extension(char *str, int check);
+// bool	check_extension(char *str, int check);
+bool	check_extension(char *fileext, char *extens);
 
 //error
 void	ft_error(t_data *data, char *error);
@@ -191,11 +193,4 @@ void	put_vertical_line(t_data *data, int i);
 void	cast_floor(t_data *data);
 //--------------------
 
-
-
-//----my functions
-void	init_pl_data(t_data *data);
-void	init_cs(t_data *data);
-void	texture(t_data *data);
-void	image(t_data *data, t_img *img);
 #endif
