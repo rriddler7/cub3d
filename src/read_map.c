@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int	check_size_map(int i, t_data *data)
+int	verify_map_size(int i, t_data *data) //check_size_map
 {
 	int	size;
 	int	save;
@@ -24,7 +24,7 @@ int	check_size_map(int i, t_data *data)
 	return (size - save);
 }
 
-int	check_n(int i, t_data *data, char **map_elem)
+int	verify_n(int i, t_data *data, char **map_elem) //check_n
 {
 	int	start;
 
@@ -45,14 +45,14 @@ void	make_array_map(int i, t_data *data)
 
 	j = 0;
 	save_i = i;
-	size = check_size_map(i, data);
+	size = verify_map_size(i, data);
 	i = save_i;
 	data->map = (char **)malloc(sizeof(char *) * (size + 2));
 	while (i > 0 && data->repfile[i - 1] != '\n')
 		--i;
 	while (j < size + 1)
 	{
-		i = check_n(i, data, &data->map[j]);
+		i = verify_n(i, data, &data->map[j]);
 		++j;
 	}
 	data->map[j] = NULL;
