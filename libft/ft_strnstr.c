@@ -1,34 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:19:17 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by vitya on 28.04.2021.
-//
-
-// функция ищет строку срц в строке дст. Если находит, то возвращает
-// указатель на начало совпадения, если не находит, то возвращает нулл.
-#include "libft.h"
-
-char	*ft_strnstr(const char *dst, const char *src, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t lenght)
 {
-	size_t	len_2;
+	size_t	i;
+	size_t	j;
 
-	len_2 = ft_strlen(src);
-	if (src[0] == '\0')
-		return ((char *) dst);
-	while (*dst != '\0' && n-- >= len_2)
+	i = 0;
+	if (*(char *)little == '\0')
+		return ((char *)big);
+	while (i < lenght && big[i])
 	{
-		if (*dst == *src && ft_memcmp(dst, src, len_2) == 0)
-			return ((char *) dst);
-		dst++;
+		j = 0;
+		if (big[i] == little[j])
+		{
+			while (i + j < lenght && big[i + j] == little[j]
+				&& big[i + j] && little[j])
+				j++;
+			if (!little[j])
+				return ((char *)big + i);
+		}
+		i++;
 	}
 	return (NULL);
 }

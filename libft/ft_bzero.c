@@ -1,18 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:16:59 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-#include "libft.h"
-
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *a, size_t lenght)
 {
-	ft_memset(s, 0, n);
+	while (lenght > 0)
+	{
+		lenght--;
+		((char *)a)[lenght] = 0;
+	}
 }
