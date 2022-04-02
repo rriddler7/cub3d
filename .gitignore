@@ -4,3 +4,5 @@
 *.out
 *.d
 cmake-build-debug
+Cub3d
+libft/libft.a
