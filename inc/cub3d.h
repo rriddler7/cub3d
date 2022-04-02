@@ -116,7 +116,8 @@ typedef struct s_data
 int		main(int argc, char **argv);
 void	init_data(t_data *data);
 void	reaplace_file(t_data *data, int fd_file);
-void	map_parser(char *file, t_data *data);
+// void	map_parser(char *file, t_data *data);
+void	parse_map(char *file, t_data *data);
 void	make_hex(t_data *data);
 void	handling_data(t_data *data);
 int		color_handling(int i, t_data *data, char color);
