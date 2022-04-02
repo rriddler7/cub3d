@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	map_parser(char *file, t_data *data) //parse_map(char *file, t_data *data)
+void	parse_map(char *file, t_data *data) //map_parser(char *file, t_data *data)
 {
 	int		fd_file;
 

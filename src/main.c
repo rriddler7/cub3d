@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_memset(&data, 0, sizeof(t_data));
-	map_parser(argv[1], &data);
+	parse_map(argv[1], &data);	//map_parser(argv[1], &data);
 	init_player_data(&data);
 	data.mlx.mlx = mlx_init();
 	get_textures(&data);
