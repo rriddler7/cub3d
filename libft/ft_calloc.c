@@ -1,35 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:17:12 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by vitya on 02.05.2021.
-//
-// Функция возващает указатель на блок памяти размером нам элементов размера
-// сайз
-
-#include "libft.h"
-
-void	*ft_calloc(size_t num, size_t size)
+void	*ft_calloc(size_t number, size_t size)
 {
-	char	*arr;
-	size_t	i;
+	size_t	res;
+	void	*sum;
 
-	i = 0;
-	arr = malloc(size * num);
-	if (!arr)
-		return (NULL);
-	while (i < (num * size))
-	{
-		arr[i] = '\0';
-		i++;
-	}
-	return ((void *) arr);
+	res = number * size;
+	sum = (void *)malloc(res);
+	if (!sum)
+		exit(1);
+	ft_bzero(sum, res);
+	return (sum);
 }

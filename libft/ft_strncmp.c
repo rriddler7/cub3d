@@ -1,34 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:19:10 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by vitya on 28.04.2021.
-//
-// Сравнивает строку с2 со строкой с1, если строки равны, то возвращает 0, если
-// строки не равны, то возвращает интовое число.
-#include "libft.h"
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *str1, const char *str2, size_t lenght)
 {
-	unsigned char	*p1;
-	unsigned char	*p2;
+	size_t	i;
 
-	p1 = (unsigned char *)s1;
-	p2 = (unsigned char *)s2;
-	if (n == 0)
-		return (0);
-	while (*p1 && *p2 && --n && *p1 == *p2)
+	i = 0;
+	while (str1[i] && str2[i] && i < lenght)
 	{
-		p1++;
-		p2++;
+		if (str1[i] != str2[i])
+			return (((unsigned char *)str1)[i] - ((unsigned char *)str2)[i]);
+		i++;
 	}
-	return ((int)(*p1 - *p2));
+	if (i < lenght)
+	{
+		if (str1[i] != str2[i])
+			return (((unsigned char *)str1)[i] - ((unsigned char *)str2)[i]);
+	}
+	return (0);
 }

@@ -1,90 +1,87 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:18:39 by mrudge            #+#    #+#             */
-/*   Updated: 2021/12/18 19:29:25 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by Mickey Rudge on 5/8/21.
-//
-// Функция итерируется по строке, подсчитывая слова при нахождении
-// разделительного символа с. Создает массив указателей куда записывается
-// каждое слово по отдельности.
-//
-//return: Указатель на начало массива arr_2 (arr_2 - massiv) сделано для
-// возрата к нулевому указателю, так как запись идет по адресам.
-//
-//Use function: ft_count_words - подсчет слов; ft_strndup - выделение памяти
-// для н символов.
-
-#include "libft.h"
-
-static int	ft_count(const char *s, char c)
+static int	ft_split_col(char const *s, char c)
 {
-	size_t	i;
-	int		counter;
+	int	i;
+	int	col;
 
 	i = 0;
-	counter = 0;
+	col = 0;
 	while (s[i] != '\0')
 	{
-		while (s[i] == c)
+		while (s[i] && s[i] == c)
 			i++;
-		if (s[i] != '\0')
-			counter++;
-		while ((s[i] != '\0') && (s[i] != c))
-			i++;
+		if (s[i] && s[i] != c)
+		{
+			while (s[i] && s[i] != c)
+				i++;
+			col++;
+		}
 	}
-	return (counter);
+	return (col);
 }
 
-static char	*ft_copy(const char *str, size_t n)
+static char	*ft_split_mword(char const *s, char *word, int len_word, int i)
 {
-	char	*new;
-	size_t	i;
+	int	j;
 
-	new = (char *)malloc(sizeof(char) * (n + 1));
-	if (new == NULL)
-		return (NULL);
-	i = 0;
-	while ((str[i] != '\0') && (i < n))
+	j = 0;
+	while (len_word > 0)
 	{
-		new[i] = str[i];
-		i++;
+		word[j] = s[i - len_word];
+		j++;
+		len_word--;
 	}
-	new[i] = '\0';
-	return (new);
+	word[j] = '\0';
+	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_split_len_word(char **array, char const *s, char c, int col)
 {
-	char	**new;
-	size_t	i;
-	size_t	place;
-	int		word;
+	int	i;
+	int	len_word;
+	int	j;
 
-	if (s == NULL)
-		return (NULL);
-	new = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1));
-	if (new == NULL)
-		return (NULL);
+	j = 0;
+	len_word = 0;
 	i = 0;
-	word = 0;
-	while (s[i] != '\0')
+	while (s[i] && j < col)
 	{
-		while (s[i] == c)
+		while (s[i] && s[i] == c)
 			i++;
-		place = i;
-		while ((s[i] != '\0') && (s[i] != c))
+		while (s[i] && s[i] != c)
+		{
 			i++;
-		if (place < i)
-			new[word++] = ft_copy(s + place, i - place);
+			len_word++;
+		}
+		array[j] = (char *)malloc(sizeof(char) * (len_word + 1));
+		if (!array)
+			exit(1);
+		ft_split_mword(s, array[j], len_word, i);
+		len_word = 0;
+		j++;
 	}
-	new[word] = NULL;
-	return (new);
+	array[j] = NULL;
+	return (array);
+}
+
+char	**ft_split(char const *ss, char c)
+{
+	int		col;
+	char	**array;
+	char	*s;
+
+	if (!ss)
+		return (NULL);
+	s = (char *)ss;
+	s = ft_strtrim(ss, (char [1]){c});
+	if (!s)
+		return (NULL);
+	col = ft_split_col(s, c);
+	array = (char **)malloc(sizeof(char *) * (col + 1));
+	if (!array)
+		exit(1);
+	ft_split_len_word(array, s, c, col);
+	free(s);
+	return (array);
 }

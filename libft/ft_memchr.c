@@ -1,33 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:18:01 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by Mickey Rudge on 4/25/21.
-//
-// Функция находит первое вхождение в памяти знака с.
-//
-//return: Возвращает указатель на на байт, или нулл, если с не встретился в
-// первых н байтах.
-#include "libft.h"
-
-void	*ft_memchr(const void *arr, int c, size_t n)
+void	*ft_memchr(void *a, int c, size_t lenght)
 {
-	unsigned char	*p;
+	size_t	i;
 
-	p = (unsigned char *)arr;
-	while (n-- != 0)
+	i = 0;
+	while (i < lenght)
 	{
-		if (*p == (unsigned char) c)
-			return (p);
-		p++;
+		if (((unsigned char *)a)[i] == (unsigned char)c)
+		{
+			return ((unsigned char *)a + i);
+		}
+		i++;
 	}
 	return (NULL);
 }

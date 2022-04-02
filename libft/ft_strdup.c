@@ -1,30 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:18:51 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-// Created by vitya on 02.05.2021.
-//
-// Функция возвращает указатель на блок памяти, в который был скопирован
-// массив стр
-#include "libft.h"
+#	include "libft.h"
 
 char	*ft_strdup(const char *str)
 {
-	size_t	len;
-	char	*p;
+	size_t	i;
+	size_t	lenght;
+	char	*cop;
 
-	len = ft_strlen(str) + 1;
-	p = (char *)malloc(sizeof(char) * len);
-	if (!p)
-		return (NULL);
-	p = ft_memcpy(p, str, len);
-	return (p);
+	i = 0;
+	lenght = ft_strlen(str);
+	cop = (char *)malloc(sizeof(char) * (lenght + 1));
+	if (!cop)
+		exit(1);
+	while (str[i])
+	{
+		cop[i] = str[i];
+		i++;
+	}
+	cop[i] = '\0';
+	return (cop);
 }

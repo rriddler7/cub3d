@@ -1,30 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:18:42 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by vitya on 28.04.2021.
-//
-// Стрчр ищет ищет в массиве первый схожий по размеру байт, если находит, то
-// возвращает указатель на него, если нет, то возвращает нул.
-//
-#include "libft.h"
-
-char	*ft_strchr(const char *str, int ch)
+char	*ft_strchr(const char *str, int a)
 {
-	char	*p;
+	int	i;
 
-	p = (char *)str;
-	while (*p && *p != ch)
-		p++;
-	if (*p == ch)
-		return (p);
+	i = 0;
+	while (str[i] && str[i] != (char)a)
+		i++;
+	if (str[i] == (char)a)
+	{
+		return ((char *)str + i);
+	}
 	return (NULL);
 }

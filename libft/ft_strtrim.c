@@ -1,57 +1,44 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 22:19:24 by mrudge            #+#    #+#             */
-/*   Updated: 2022/01/27 20:18:17 by mrudge           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#	include "libft.h"
 
-// Created by vitya on 05.05.2021.
-// Функция производит вырезание подстроки сет из строки s1 с начала и с конца с
-// выделением памяти под новый массив
-
-#include "libft.h"
-
-int	ft_count(char const *s1, char c)
+static int	ft_str_chr(const char *str, char a)
 {
-	while (*s1)
-	{
-		if (*s1 == c)
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{	
+		if (str[i] == a)
 			return (1);
-		s1++;
+		i++;
 	}
 	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
+	char	*str;
+	size_t	start;
 	size_t	end;
-	size_t	begin;
-	char	*arr;
+	size_t	i;
 
-	end = ft_strlen(s1);
-	i = 0;
-	begin = 0;
-	if (!s1 || !set)
-		return ((char *)s1);
-	while (s1[begin] && ft_count(set, s1[begin]))
-		begin++;
-	while (end > begin && ft_count(set, s1[end - 1]))
-		end--;
-	arr = (char *) malloc(end - begin + 1);
-	if (!arr)
+	if (s1 == NULL || set == NULL)
 		return (NULL);
-	while (end > begin)
+	end = ft_strlen(s1);
+	start = 0;
+	i = 0;
+	while (s1[start] && ft_str_chr(set, s1[start]))
+		start++;
+	while (end > start && ft_str_chr(set, s1[end - 1]))
+		end--;
+	str = (char *)malloc(end - start + 1);
+	if (str == NULL)
+		exit(1);
+	while (start < end)
 	{
-		arr[i] = s1[begin];
+		str[i] = s1[start];
 		i++;
-		begin++;
+		start++;
 	}
-	arr[i] = '\0';
-	return (arr);
+	str[i] = '\0';
+	return (str);
 }
