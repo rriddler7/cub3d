@@ -14,7 +14,7 @@ void	ft_error2(char *error)
 
 void	ft_error(t_data *data, char *error)
 {
-	cleaning(data);
+	clean(data);
 	if (ft_strncmp(error, "rgb", 3) == 0)
 		write(2, "Error\nrgb color must be from 0 to 255\n", 38);
 	else if (ft_strncmp(error, "num_rgb", 7) == 0)

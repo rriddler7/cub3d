@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	reaplace_file(t_data *data, int fd_file)
+void	parse_file(t_data *data, int fd_file)
 {
 	char	*save;
 	char	*save_replace;

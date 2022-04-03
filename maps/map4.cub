@@ -1,11 +1,11 @@
   
-	 NO		 ./textures/hrusch1.xpm
+	 NO		 ./textures/no_tex.xpm
 
-		EA 		./textures/hrusch2.xpm			      
-    WE         ./textures/hrusch3.xpm
-  SO    ./textures/hrusch4.xpm
+		EA 		./textures/ea_tex.xpm
+    WE         ./textures/we_tex.xpm
+  SO    ./textures/so_tex.xpm
 
-		F 			34,32,28
+		F 			204, 192, 192
     C           50, 50, 50
 
     111111111111111111111

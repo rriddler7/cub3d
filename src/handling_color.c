@@ -1,11 +1,11 @@
 #include "cub3d.h"
 
-int	to_hex(int r, int g, int b)
+int	to_hex(int r, int g, int b) //переводим цвета в 16тиричную систему
 {
 	return (r << 16 | g << 8 | b);
 }
 
-void	hext_char_to_int(t_data *data, char **array_atoi, char color)
+void	hex_char_to_int(t_data *data, char **array_atoi, char color) //считываем из карты данные по цвету, переводим в инты, затем в hex
 {
 	long long	r;
 	long long	g;
@@ -24,7 +24,7 @@ void	hext_char_to_int(t_data *data, char **array_atoi, char color)
 		data->ceiling = to_hex(r, g, b);
 }
 
-int	color_handling3(int i, int start, t_data *data, char **array_atoi)
+int	floor_ceil_color3(int i, int start, t_data *data, char **array_atoi)
 {
 	int	j;
 
@@ -34,11 +34,11 @@ int	color_handling3(int i, int start, t_data *data, char **array_atoi)
 	while (data->repfile[i] && data->repfile[i] != ','
 		&& data->repfile[i] != '\n')
 	{
-		if (check_fl_cel_error(data->repfile[i]))
+		if (verify_floor_ceil(data->repfile[i]))
 			ft_error(data, "incorr");
 		i++;
 	}
-	if (check_fl_cel_error(data->repfile[i]))
+	if (verify_floor_ceil(data->repfile[i]))
 		ft_error(data, "incorr");
 	if (i != start)
 	{
@@ -52,7 +52,7 @@ int	color_handling3(int i, int start, t_data *data, char **array_atoi)
 	return (i);
 }
 
-int	color_handling2(int i, t_data *data, char **array_atoi, char color)
+int	floor_ceil_color2(int i, t_data *data, char **array_atoi, char color)
 {
 	int	start;
 
@@ -67,10 +67,10 @@ int	color_handling2(int i, t_data *data, char **array_atoi, char color)
 				ft_error(data, "rgb");
 		}
 		start = i;
-		i = color_handling3(i, start, data, array_atoi);
+		i = floor_ceil_color3(i, start, data, array_atoi);
 		if (data->repfile[i] == '\n')
 		{
-			hext_char_to_int(data, array_atoi, color);
+			hex_char_to_int(data, array_atoi, color);
 			break ;
 		}
 		i++;
@@ -78,7 +78,7 @@ int	color_handling2(int i, t_data *data, char **array_atoi, char color)
 	return (i);
 }
 
-int	color_handling(int i, t_data *data, char color)
+int	floor_ceil_color(int i, t_data *data, char color) //color_handling обработка цвета пола и потолка
 {
 	char	**array_atoi;
 	int		j;
@@ -89,7 +89,7 @@ int	color_handling(int i, t_data *data, char color)
 		array_atoi[j++] = NULL;
 	if (!array_atoi)
 		exit(1);
-	i = color_handling2(i, data, array_atoi, color);
+	i = floor_ceil_color2(i, data, array_atoi, color);
 	if (array_atoi)
 		free_array(array_atoi);
 	return (i);

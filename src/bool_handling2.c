@@ -1,17 +1,17 @@
 #include "cub3d.h"
 
-bool	check_fl_cel_error(char a)
+bool	verify_floor_ceil(char a) //check_fl_cel_error проверка потолка и пола
 {
 	return (a != ' ' && a != '\t' && !(a >= '0' && a <= '9')
 		&& a != ',' && a != '\n');
 }
 
-bool	check_plr(char a)
+bool	verify_player(char a) //check_pltr
 {
 	return (a == 'N' || a == 'S' || a == 'W' || a == 'E');
 }
 
-bool	check_s_t(char a, int check)
+bool	verify_space_tab(char a, int check)
 {
 	if (check)
 		return (a != ' ' && a != '\t');
@@ -32,7 +32,7 @@ bool	check_s_t(char a, int check)
 // 	return (false);
 // }
 
-bool	check_extension(char *fileext, char *extens) //solong verify_extens
+bool	verify_extension(char *fileext, char *extens) //check_extension
 {
 	int	fileext_len;
 	int	extens_len;

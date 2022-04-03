@@ -13,7 +13,7 @@ void	free_array(char **array)
 	free(array);
 }
 
-void	cleaning(t_data *data)
+void	clean(t_data *data)
 {
 	if (data->no)
 		free(data->no);
