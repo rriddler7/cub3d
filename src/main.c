@@ -92,6 +92,6 @@ int	main(int argc, char **argv)
 	mlx_hook(data.mlx.win, 17, 0, ft_exit, &data);
 	mlx_loop_hook(data.mlx.mlx, render_image, &data);
 	mlx_loop(data.mlx.mlx);
-	cleaning(&data);
+	clean(&data);
 	return (0);
 }

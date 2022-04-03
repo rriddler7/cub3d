@@ -114,13 +114,12 @@ typedef struct s_data
 
 //----PARSER----
 int		main(int argc, char **argv);
-void	init_data(t_data *data);
-void	reaplace_file(t_data *data, int fd_file);
-// void	map_parser(char *file, t_data *data);
-void	parse_map(char *file, t_data *data);
-void	make_hex(t_data *data);
-void	handling_data(t_data *data);
-int		color_handling(int i, t_data *data, char color);
+void	init_data(t_data *data); //не меняла
+void	parse_file(t_data *data, int fd_file); //reaplace_file
+void	parse_map(char *file, t_data *data); //void	map_parser(char *file, t_data *data);
+//void	make_hex(t_data *data);
+void	handle_data(t_data *data); //handling_data
+int		floor_ceil_color(int i, t_data *data, char color); //color_ceiling
 void	read_map(int i, t_data *data);
 void	map_error(t_data *data);
 
@@ -129,19 +128,18 @@ bool	i_is_zero_color(int i, char a, t_data *data);
 bool	i_isnt_zero_color(int i, char a, t_data *data);
 bool	i_is_zero_cmp(int i, char *arg, t_data *data);
 bool	i_isnt_zero_cmp(int i, char *arg, t_data *data);
-bool	check_fl_cel_error(char a);
+bool	verify_floor_ceil(char a); //check_fl_cel_error
 //cheking player (N,S,W,E)
-bool	check_plr(char a);
+bool	verify_player(char a); //check_plr
 //checking spaces and tabs
-bool	check_s_t(char a, int check);
+bool	verify_space_tab(char a, int check); //check_s_t
 //checking .cub and .xpm
-// bool	check_extension(char *str, int check);
-bool	check_extension(char *fileext, char *extens);
+bool	verify_extension(char *fileext, char *extens); // bool	check_extension(char *str, int check);
 
 //error
 void	ft_error(t_data *data, char *error);
 //cleaning
-void	cleaning(t_data *data);
+void	clean(t_data *data);
 void	free_array(char **array);
 //--------------
 
