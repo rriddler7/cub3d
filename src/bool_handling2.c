@@ -6,12 +6,12 @@ bool	verify_floor_ceil(char a) //check_fl_cel_error проверка потол�
 		&& a != ',' && a != '\n');
 }
 
-bool	verify_side(char a) //check_pltr
+bool	verify_player(char a) //check_pltr
 {
 	return (a == 'N' || a == 'S' || a == 'W' || a == 'E');
 }
 
-bool	verify_tab(char a, int check)
+bool	verify_space_tab(char a, int check)
 {
 	if (check)
 		return (a != ' ' && a != '\t');

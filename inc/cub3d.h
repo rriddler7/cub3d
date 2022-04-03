@@ -130,9 +130,9 @@ bool	i_is_zero_cmp(int i, char *arg, t_data *data);
 bool	i_isnt_zero_cmp(int i, char *arg, t_data *data);
 bool	verify_floor_ceil(char a); //check_fl_cel_error
 //cheking player (N,S,W,E)
-bool	verify_side(char a); //check_plr
+bool	verify_player(char a); //check_plr
 //checking spaces and tabs
-bool	verify_tab(char a, int check); //check_s_t
+bool	verify_space_tab(char a, int check); //check_s_t
 //checking .cub and .xpm
 bool	verify_extension(char *fileext, char *extens); // bool	check_extension(char *str, int check);
 

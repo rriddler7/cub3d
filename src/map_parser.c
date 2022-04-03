@@ -10,6 +10,8 @@ void	parse_map(char *file, t_data *data) //map_parser(char *file, t_data *data)
 	fd_file = open(file, O_RDONLY, 0644);
 	if (fd_file == -1)
 		ft_error(data, "open_file");
+	if (read(fd_file, file, 1) == -1) //добавила проверку, .cub не папка
+		ft_error(data, "open_file");
 	else
 	{
 		parse_file(data, fd_file);
