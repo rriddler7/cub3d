@@ -50,8 +50,6 @@ void	init_player_data(t_data *data)
 				data->player.y = (double)j + 0.5;
 				data->player.x = (double)i + 0.5;
 				data->map[(int)data->player.x][(int)data->player.y] = '0';
-				data->mlx.prev_x_mouse = -1;
-				data->mlx.is_mouse_active = -1;
 				return ;
 			}
 			j++;
@@ -82,11 +80,9 @@ int	main(int argc, char **argv)
 	parse_map(argv[1], &data);	//map_parser(argv[1], &data);
 	init_player_data(&data);
 	data.mlx.mlx = mlx_init();
-	get_textures(&data);
+	make_textures(&data);
 	make_image(&data, &data.tex.picture);
 	data.mlx.win = mlx_new_window(data.mlx.mlx, WIDTH, HEIGHT, "Cub3d");
-	mlx_mouse_hook(data.mlx.win, small_mousehook, &data);
-	mlx_hook(data.mlx.win, 6, 0, mousehook, &data);
 	mlx_hook(data.mlx.win, 2, 0, keyhook, &data);
 	mlx_hook(data.mlx.win, 3, 0, keyrelease, &data);
 	mlx_hook(data.mlx.win, 17, 0, ft_exit, &data);
