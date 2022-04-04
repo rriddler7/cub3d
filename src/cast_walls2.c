@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	find_wall_height(t_data *data)
+void	find_wall(t_data *data)
 {
 	if (data->player.side == 0)
 		data->player.wall_dist = (data->player.side_dest_x - \

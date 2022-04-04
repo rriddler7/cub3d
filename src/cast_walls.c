@@ -105,7 +105,7 @@ int	cast_walls(t_data *data)
 		find_ray_directions_and_distances(data, i);
 		find_step_values(data);
 		find_wall_hit(data);
-		find_wall_height(data);
+		find_wall(data);
 		find_where_was_the_hit(data);
 		put_vertical_line(data, i);
 		i++;

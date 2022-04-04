@@ -6,8 +6,8 @@ NO		 ./textures/no_tex.xpm
   SO    ./textures/so_tex.xpm
 
 
-  F 234,234,1
-  C                     11,12,123                   
+  F 204, 192, 192
+  C                     50, 50, 50
  
  
  
