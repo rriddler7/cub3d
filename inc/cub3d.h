@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrudge <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 20:53:17 by mrudge            #+#    #+#             */
+/*   Updated: 2022/04/04 20:53:19 by mrudge           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -111,12 +123,12 @@ typedef struct s_data
 
 //----PARSER----
 int		main(int argc, char **argv);
-void	init_data(t_data *data); //не меняла
-void	parse_file(t_data *data, int fd_file); //reaplace_file
-void	parse_map(char *file, t_data *data); //void	map_parser(char *file, t_data *data);
-//void	make_hex(t_data *data);
-void	handle_data(t_data *data); //handling_data
-int		floor_ceil_color(int i, t_data *data, char color); //color_ceiling
+void	init_data(t_data *data);
+void	parse_file(t_data *data, int fd_file);
+void	parse_map(char *file, t_data *data);
+
+void	handle_data(t_data *data);
+int		floor_ceil_color(int i, t_data *data, char color);
 void	read_map(int i, t_data *data);
 void	map_error(t_data *data);
 
@@ -125,51 +137,36 @@ bool	i_is_zero_color(int i, char a, t_data *data);
 bool	i_isnt_zero_color(int i, char a, t_data *data);
 bool	i_is_zero_cmp(int i, char *arg, t_data *data);
 bool	i_isnt_zero_cmp(int i, char *arg, t_data *data);
-bool	verify_floor_ceil(char a); //check_fl_cel_error
-//cheking player (N,S,W,E)
-bool	verify_player(char a); //check_plr
-//checking spaces and tabs
-bool	verify_space_tab(char a, int check); //check_s_t
-//checking .cub and .xpm
-bool	verify_extension(char *fileext, char *extens); // bool	check_extension(char *str, int check);
+bool	verify_floor_ceil(char a);
+bool	verify_player(char a);
+bool	verify_space_tab(char a, int check);
+bool	verify_extension(char *fileext, char *extens);
 
 //error
 void	ft_error(t_data *data, char *error);
 //cleaning
 void	clean(t_data *data);
 void	free_array(char **array);
-//--------------
 
-//----keys.c----
 int		keyhook(int keycode, t_data *data);
 int		keyrelease(int keycode, t_data *data);
 void	press_keys(t_data *data);
-//--------------
 
-//----key_funcs.c----
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	strafe(t_data *data, int dir);
-//-------------------
 
-//----key_funcs2.c----
 void	turn_left(t_data *data);
 void	turn_right(t_data *data);
 void	rotate(t_data *data, int cos_val, int sin_val);
-//--------------------
 
-//----main.c----
 int		ft_exit(t_data *data);
-//--------------
 
-//----textures.c----
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		get_pixel_color(t_img *img, int x, int y);
 void	make_image(t_data *data, t_img *img);
 void	make_textures(t_data *data);
-//------------------
 
-//----cast_walls.c----
 int		cast_walls(t_data *data);
 //--------------------
 
