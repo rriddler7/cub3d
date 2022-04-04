@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handling_color.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rriddler <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 20:05:41 by rriddler          #+#    #+#             */
+/*   Updated: 2022/04/04 20:05:44 by rriddler         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int	to_hex(int r, int g, int b) //переводим цвета в 16тиричную систему
+int	to_hex(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }
 
-void	hex_char_to_int(t_data *data, char **array_atoi, char color) //считываем из карты данные по цвету, переводим в инты, затем в hex
+void	hex_char_to_int(t_data *data, char **array_atoi, char color)
 {
 	long long	r;
 	long long	g;
@@ -78,7 +90,7 @@ int	floor_ceil_color2(int i, t_data *data, char **array_atoi, char color)
 	return (i);
 }
 
-int	floor_ceil_color(int i, t_data *data, char color) //color_handling обработка цвета пола и потолка
+int	floor_ceil_color(int i, t_data *data, char color)
 {
 	char	**array_atoi;
 	int		j;

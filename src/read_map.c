@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rriddler <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 20:07:41 by rriddler          #+#    #+#             */
+/*   Updated: 2022/04/04 20:07:49 by rriddler         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int	verify_map_size(int i, t_data *data) //check_size_map
+int	verify_map_size(int i, t_data *data)
 {
 	int	size;
 	int	save;
@@ -24,7 +36,7 @@ int	verify_map_size(int i, t_data *data) //check_size_map
 	return (size - save);
 }
 
-int	verify_n(int i, t_data *data, char **map_elem) //check_n
+int	verify_n(int i, t_data *data, char **map_elem)
 {
 	int	start;
 

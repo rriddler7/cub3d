@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rriddler <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 20:18:15 by rriddler          #+#    #+#             */
+/*   Updated: 2022/04/04 20:18:20 by rriddler         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	ft_exit(t_data *data)
@@ -79,7 +91,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_memset(&data, 0, sizeof(t_data));
-	parse_map(argv[1], &data);	//map_parser(argv[1], &data);
+	parse_map(argv[1], &data);
 	init_player_data(&data);
 	data.mlx.mlx = mlx_init();
 	get_textures(&data);

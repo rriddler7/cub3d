@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handling_data.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rriddler <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 20:05:56 by rriddler          #+#    #+#             */
+/*   Updated: 2022/04/04 20:05:59 by rriddler         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int	cut_data(int i, t_data *data, char **str) //data_clipping пропустить пробелы и прочее, вырезать данные
+int	cut_data(int i, t_data *data, char **str)
 {
 	int	start;
 
@@ -28,17 +40,19 @@ int	cut_data(int i, t_data *data, char **str) //data_clipping пропустит
 	return (i);
 }
 
-void	verify_textures(t_data *data) //data_validation проверка пути и расширения xpm
+void	verify_textures(t_data *data)
 {
 	if (access(data->no, R_OK) || access(data->so, R_OK)
 		|| access(data->we, R_OK) || access(data->ea, R_OK))
 		ft_error(data, "text_error");
-	if (!verify_extension(data->no, ".xpm") || !verify_extension(data->no, ".xpm")
-		|| !verify_extension(data->we, ".xpm") || !verify_extension(data->ea, ".xpm"))
+	if (!verify_extension(data->no, ".xpm")
+		|| !verify_extension(data->no, ".xpm")
+		|| !verify_extension(data->we, ".xpm")
+		|| !verify_extension(data->ea, ".xpm"))
 		ft_error(data, "ext");
 }
 
-int	selecte_param(int i, t_data *data) //выборка данных по текстурам, полу, потолку
+int	selecte_param(int i, t_data *data)
 {
 	if (i == 0 && i_is_zero_cmp(i, "NO", data))
 		i = cut_data(i + 2, data, &data->no);
@@ -67,7 +81,7 @@ int	selecte_param(int i, t_data *data) //выборка данных по тек
 	return (i);
 }
 
-void	handle_data(t_data *data) //обработка данных по текстурам, полу, потолку, карты, создание 2д карты
+void	handle_data(t_data *data)
 {
 	int	i;
 
